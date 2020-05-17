@@ -5,18 +5,16 @@ import './Cart.css';
 
 class Cart extends Component {
     render() {
-
         const summary = Object.keys(this.props.selected).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
             const selectedOption = this.props.selected[feature];
             return (
                 <Option
-                    key={idx} 
-                    featureHash={featureHash}
+                    key={featureHash}
                     feature={feature}
                     selectedOption={selectedOption}
                 />
-            )
+            );
         });
   
         return (
@@ -27,7 +25,7 @@ class Cart extends Component {
                 selected={this.props.selected}
             />
           </section>
-        )
+        );
     }
 }
 

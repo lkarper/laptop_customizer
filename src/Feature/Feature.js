@@ -5,28 +5,29 @@ import './Feature.css';
 
 class Feature extends Component {
     render() {
-        const options = this.props.features[this.props.feature].map(item => {
+        const { features, feature, updateFeature, selected, featureHash } = this.props;
+        const options = features[feature].map(item => {
             const itemHash = slugify(JSON.stringify(item));
             return (
                 <FeatureItem
                     key={itemHash} 
                     itemHash={itemHash}
-                    feature={this.props.feature}
+                    feature={feature}
                     item={item}
-                    updateFeature={this.props.updateFeature}
-                    checked={item.name === this.props.selected[this.props.feature].name}
+                    updateFeature={updateFeature}
+                    checked={item.name === selected[feature].name}
                 />
             );
         });
             
         return (
-            <fieldset className="feature" key={this.props.featureHash}>
+            <fieldset className="feature" key={featureHash}>
                 <legend className="feature__name">
-                <h3>{this.props.feature}</h3>
+                    <h3>{feature}</h3>
                 </legend>
                 {options}
             </fieldset>
-            );
+        );
     }
 }
 
