@@ -4,10 +4,7 @@ import './Total.css';
 class Total extends Component {
   render() {
     const { selected } = this.props;
-    const total = Object.keys(selected).reduce(
-      (acc, curr) => acc + selected[curr].cost,
-      0
-    );
+    const total = Object.keys(selected).reduce((acc, curr) => acc + selected[curr].cost, 0);
     const USCurrencyFormat = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD'
